@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Assignment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+:has(:not()) vs :not(:has())
+
+:has(:not()): Selects an element that has children which do not match a specified selector.
+              In this case, all .task boxes are marked with a red border if the task has not yet been completed.
+              In other words, all boxes whose checkbox is not :checked have a red border.
+:not(:has()): Selects an element that does not have any children matching a specified selector.
+              All ".task" boxes are display: flex so that the image appears next to the text.
+              However, if a ".task" has no image, nothing should be displayed next to each other.
+              Therefore, all .task boxes that do not have an image are displayed with display: block flow-root and are given a padding.
+
+Code Examples: CSS Datei - Zeile 182 - 188
+
+Kompatibilität
+
+Seit Dezember 2023 wird die Pseudoklasse :has() als vollständig kompatibel mit den wichtigsten Browsern betrachtet,
+nämlich Chrome, Edge, Firefox und Safari. Diese Bewertung stammt aus den Baseline-Daten und wird durch die Interop-Initiative bestätigt,
+die :has() ebenfalls als 100% kompatibel mit diesen Browsern eingestuft hat. Darüber hinaus wurde die Unterstützung von
+:has() auch in den Entwicklerversionen dieser Browser – Chrome Dev, Edge Dev, Firefox Nightly und Safari Technology Preview – getestet und als vollständig kompatibel eingestuft. Diese umfassende Unterstützung macht :has() zu einer zuverlässigen Wahl für den Einsatz in Produktionsumgebungen, da es ermöglicht, Elemente auszuwählen, die bestimmte Nachfahren oder Geschwister enthalten, und damit komplexe Selektionslogiken vereinfacht.
+:has()
+-->
+<section class="container">
+    <header>
+        <a class="logo" href="#home">Assignment</a>
+
+        <label for="menu-toggle" class="menu-icon">
+            <span>&#9776;</span>
+            <input type="checkbox" id="menu-toggle">
+        </label>
+
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li>
+                    <a href="#">About</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Our Story</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">SEO</a></li>
+                        <li><a href="#">Content Writing</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+                <li><a href="#">Link 5</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        <article class="todo-list">
+            <h2>ToDos</h2>
+            <section>
+                <div class="task">
+                    <img src="https://via.placeholder.com/1920x1080" alt="Product Image">
+                    <div>
+                        <h3>ToDo 1</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                        </p>
+                        <input type="checkbox" id="task1" name="task1">
+                        <label for="task1">Erledigt</label>
+                    </div>
+                </div>
+
+                <div class="task">
+                    <h3>ToDo ohne Bild</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    </p>
+                    <div>
+                        <input type="checkbox" id="task3" name="task3">
+                        <label for="task3">Erledigt</label>
+                    </div>
+                </div>
+            </section>
+            <section>
+
+                <div class="task">
+                    <h3>ToDo ohne Bild</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    </p>
+                    <div>
+                        <input type="checkbox" id="task4" name="task4">
+                        <label for="task4">Erledigt</label>
+                    </div>
+                </div>
+                <div class="task">
+                    <img src="https://via.placeholder.com/1920x1080" alt="Product Image">
+                    <div>
+                        <h3>ToDo 2</h3>
+
+                        <p>
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                        </p>
+                        <input type="checkbox" id="task2" name="task2">
+                        <label for="task2">Erledigt</label>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+    </main>
+    <footer>
+        Footer
+    </footer>
+</section>
+</body>
+</html>

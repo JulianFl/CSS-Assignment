@@ -1,0 +1,259 @@
+:root{
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    container-name: grid-container;
+    container-type: inline-size;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+figure, h3, h2, h1, p{
+    margin: 0;
+}
+h2{
+    font-size: 3rem;
+    margin-block-end: 2rem;
+}
+h3{
+    font-size: 2rem;
+    margin-block-end: 1.5rem;
+}
+p{
+    font-size: 1.25rem;
+}
+.container{
+    display: block grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    gap: 20px;
+    grid-template-areas:
+        "hd hd hd hd"
+        "sidebar main main main"
+        "sidebar main main main"
+        "ft ft ft ft";
+    .item{
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
+    @container grid-container (width < 800px) {
+        &.container{
+            grid-template-areas:
+        "hd hd hd hd"
+        "sidebar sidebar sidebar sidebar"
+        "main main main main"
+        "main main main main"
+        "ft ft ft ft";
+        }
+        .todo-list{
+            padding-inline-end: 0;
+        }
+        .nav-menu{
+            display: none;
+        }
+    }
+}
+
+header{
+    grid-area: hd;
+    container-name: header-container;
+    container-type: inline-size;
+    display: block flex;
+    align-items: center;
+    border-block-end: 3px solid black;
+    .logo{
+        display: block flow-root;
+        padding: .5rem;
+        font-size: 1.5rem;
+        color: #000;
+        text-decoration: none;
+        margin-right: auto;
+    }
+    [for="menu-toggle"] {
+        display: none;
+    }
+    .nav-menu{
+
+        ul {
+            display: flex;
+            justify-content: space-around;
+            list-style-type: none;
+            li{
+                position: relative;
+                display: block flex;
+                &:has(> .sub-menu) > a::after {
+                    content: ' ▼';
+                    color: #000;
+                    font-size: 1rem;
+                }
+                &:has(> .sub-menu):hover > .sub-menu {
+                    display: block;
+                }
+                a{
+                    color: black;
+                    text-decoration: none;
+                    padding: 2rem 3rem;
+                    display: block flow-root;
+                    transition: background-color 0.3s;
+                    font-size: 1.25rem;
+                }
+
+                .sub-menu {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background-color: white;
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    min-width: 150px;
+                    z-index: 1000;
+                    border: 3px solid #000;
+                    li{
+                        position: relative;
+                        display: block;
+                        a{
+                            padding: 1rem 1.5rem;
+                            color: black;
+                            display: block;
+                            text-decoration: none;
+                            &:hover{
+                                background-color: black;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @container header-container (width < 1200px) {
+        .nav-menu{
+            display: none;
+        }
+        [for="menu-toggle"] {
+            display: block flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 1rem;
+            font-size: 2rem;
+            span{
+                display: inline flex;
+
+            }
+        }
+        [for="menu-toggle"]::after {
+            content: 'Menu';
+            font-size: 1.25rem;
+            margin-left: .25rem;
+        }
+        #menu-toggle {
+            display: none;
+        }
+    }
+
+}
+main{
+    grid-area: main;
+    .todo-list{
+        padding-inline-end: 20px;
+
+        section{
+            display: block grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-block-end: 2rem;
+            container-type: inline-size;
+            container-name: taskContainer;
+        }
+        .task{
+            display: block flex;
+            gap: 1rem;
+            border: 3px solid green;
+            &:has(input[type="checkbox"]:not(:checked)) {
+                border: 3px solid red;
+            }
+            &:not(:has(img)){
+                display: block flow-root;
+                padding: 1rem;
+            }
+            img{
+                width: 50%;
+                object-fit: cover;
+                height: auto;
+                aspect-ratio: 16/9;
+                & + div {
+                    padding-block-start: 1rem;
+                }
+            }
+            label{
+                font-size: 1.25rem;
+                color: #000;
+                display: inline flow-root;
+                margin-block-start: 1rem;
+            }
+        }
+
+        @container taskContainer (width < 1000px) {
+            .task{
+                flex-direction: column;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+aside{
+    grid-area: sidebar;
+    padding: 10px;
+    border-block-start: 3px solid black;
+    border-inline-end: 3px solid black;
+    border-block-end: 3px solid black;
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li {
+        margin-bottom: 5px;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        transition: background-color 0.3s ease;
+        font-size: 1.25rem;
+    }
+
+    nav ul li a:hover {
+        background-color: #ddd;
+    }
+}
+footer{
+    grid-area: ft;
+    container-type: inline-size;
+    container-name: taskContainer;
+    resize: horizontal;
+    font-size: 3rem;
+    border-block-start: 3px solid black;
+}
+
+
+@supports (selector(:not)) {
+    input:not([type="submit"]) {
+        border: 1px solid blue;
+    }
+}
