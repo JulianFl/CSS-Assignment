@@ -60,6 +60,8 @@ In contrast, `:not()` has not undergone baseline verification. However, it has d
     ```
 - Use a polyfill: If you want to use :has() or :not() in older browsers, you can use a polyfill library.
 
+Source: The possible Fallbacks were suggested by ChatGPT and I have evaluated and optimized them.
+
 ---
 
 ## Container Query + Grid
@@ -70,7 +72,7 @@ I have a website where you can check off to-dos as completed. The layout is divi
 - container: As soon as the aside & main container becomes narrower than 800px, it is re-layouted and the aside appears above the main area
 - .task-box: As soon as the box becomes smaller than 500px, the text is no longer next to the image but below it.
 
-### Discussion
+### Compatibility
 CSS Container Queries (Size) are Baseline since 2023 and are newly available across major browsers according to CanIUse.
 But according to MDN, container queries are not yet baseline. So it could be that individual features are not yet baseline. I'm not sure about the current status here. I would still be cautious about using it in Production. I think you can use it for smaller projects with users of modern browsers. For older projects, perhaps enjoy it with caution. In any case, extensive cross-browser testing is necessary.
 Interop's assessment last year rated Container Queries as 92% compatible across these browsers.
@@ -86,8 +88,8 @@ According to the Interop Dashboard, Grid works 83.8% the same across all browser
 - [Interop](https://wpt.fyi/interop-2023?stable)
 
 #### Possible Fallbacks
-- Traditional Media Queries: Use viewport-based media queries to adjust the layout and styles based on the overall screen size. While this doesn't provide the same granularity as container queries, it allows you to create a responsive design that works across different screen sizes.
-- JavaScript Solution: Resize Observer: The Resize Observer API allows you to detect changes in the size of an element and adjust styles or classes accordingly. This approach can simulate the effect of container queries but requires JavaScript.
+- Traditional Media Queries: Check if the Browser supports Container Queries and if not, use viewport-based media queries to adjust the layout and styles based on the overall screen size. While this doesn't provide the same granularity as container queries, it allows you to create a responsive design that works across different screen sizes.
+- JavaScript Solution: Check if the Browser supports Container Queries and if not use the Resize Observer: The Resize Observer API allows you to detect changes in the size of an element and adjust styles or classes accordingly. This approach can simulate the effect of container queries but requires JavaScript.
 ```js
   const container = document.querySelector('.container');
   const observer = new ResizeObserver(entries => {
@@ -116,3 +118,5 @@ According to the Interop Dashboard, Grid works 83.8% the same across all browser
   }
 }
 ```
+Source: The possible Fallbacks were suggested by ChatGPT and I have evaluated and optimized them.
+
