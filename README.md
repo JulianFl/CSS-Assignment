@@ -69,7 +69,7 @@ Source: The possible Fallbacks were suggested by ChatGPT and I have evaluated an
 ### Description
 I have a website where you can check off to-dos as completed. The layout is divided into header, sidebar, main and footer. Furthermore, the main area is a two-column grid. There are a total of three container queries:
 - header: As soon as the width of the header becomes smaller than 1200px, the menu is hidden and a menu button appears.
-- container: As soon as the aside & main container becomes narrower than 800px, it is re-layouted and the aside appears above the main area
+- container: As soon as the main container becomes narrower than 800px, it is re-layouted and the aside appears above the main area
 - .task-box: As soon as the box becomes smaller than 500px, the text is no longer next to the image but below it.
 
 ### Compatibility
