@@ -7,27 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!--
-:has(:not()) vs :not(:has())
-
-:has(:not()): Selects an element that has children which do not match a specified selector.
-              In this case, all .task boxes are marked with a red border if the task has not yet been completed.
-              In other words, all boxes whose checkbox is not :checked have a red border.
-:not(:has()): Selects an element that does not have any children matching a specified selector.
-              All ".task" boxes are display: flex so that the image appears next to the text.
-              However, if a ".task" has no image, nothing should be displayed next to each other.
-              Therefore, all .task boxes that do not have an image are displayed with display: block flow-root and are given a padding.
-
-Code Examples: CSS Datei - Zeile 182 - 188
-
-Kompatibilität
-
-Seit Dezember 2023 wird die Pseudoklasse :has() als vollständig kompatibel mit den wichtigsten Browsern betrachtet,
-nämlich Chrome, Edge, Firefox und Safari. Diese Bewertung stammt aus den Baseline-Daten und wird durch die Interop-Initiative bestätigt,
-die :has() ebenfalls als 100% kompatibel mit diesen Browsern eingestuft hat. Darüber hinaus wurde die Unterstützung von
-:has() auch in den Entwicklerversionen dieser Browser – Chrome Dev, Edge Dev, Firefox Nightly und Safari Technology Preview – getestet und als vollständig kompatibel eingestuft. Diese umfassende Unterstützung macht :has() zu einer zuverlässigen Wahl für den Einsatz in Produktionsumgebungen, da es ermöglicht, Elemente auszuwählen, die bestimmte Nachfahren oder Geschwister enthalten, und damit komplexe Selektionslogiken vereinfacht.
-:has()
--->
     <header>
         <a class="logo" href="#home">Assignment</a>
 
